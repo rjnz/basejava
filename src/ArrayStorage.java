@@ -23,7 +23,11 @@ public class ArrayStorage {
     }
 
     Resume get(String uuid) {
-        return null;
+        int counter = 0;
+        while (!storage[counter].uuid.equals(uuid)) {
+            counter++;
+        }
+        return storage[counter];
     }
 
     void delete(String uuid) {
