@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -16,7 +17,11 @@ public class ArrayStorage {
 
     void save(Resume r) {
         int counter = 0;
-        while (storage[counter] != null || Objects.requireNonNull(storage[counter]).uuid.equals(r.uuid)) {
+        while (storage[counter] != null) {
+            if (storage[counter].uuid.equals(r.uuid)) {
+                storage[counter] = r;
+                return;
+            }
             storage[counter] = storage[counter++];
         }
         storage[counter] = r;
@@ -48,6 +53,10 @@ public class ArrayStorage {
     }
 
     int size() {
-        return 0;
+        int counter = 0;
+        while (storage[counter] != null) {
+            counter++;
+        }
+        return counter;
     }
 }
