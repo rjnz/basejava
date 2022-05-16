@@ -9,8 +9,7 @@ public class ArrayStorage {
     void clear() {
         int counter = 0;
         while (storage[counter] != null) {
-            storage[counter] = null;
-            storage[counter] = storage[counter++];
+            storage[counter++] = null;
         }
     }
 
