@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * Array based storage for Resumes
  */
@@ -13,6 +15,11 @@ public class ArrayStorage {
     }
 
     void save(Resume r) {
+        int counter = 0;
+        while (storage[counter] != null || Objects.requireNonNull(storage[counter]).uuid.equals(r.uuid)) {
+            storage[counter] = storage[counter++];
+        }
+        storage[counter] = r;
     }
 
     Resume get(String uuid) {
