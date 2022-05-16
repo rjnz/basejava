@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Objects;
 
 /**
  * Array based storage for Resumes
@@ -29,7 +28,7 @@ public class ArrayStorage {
 
     Resume get(String uuid) {
         int counter = 0;
-        while (!storage[counter].uuid.equals(uuid)) {
+        while (storage[counter] != null && !storage[counter].uuid.equals(uuid)) {
             counter++;
         }
         return storage[counter];
@@ -37,11 +36,11 @@ public class ArrayStorage {
 
     void delete(String uuid) {
         int counter = 0;
-        while (!storage[counter].uuid.equals(uuid)) {
+        while (storage[counter] != null && !storage[counter].uuid.equals(uuid)) {
             counter++;
         }
         do {
-            storage[counter] = storage[counter++];
+            storage[counter] = storage[++counter];
         } while (storage[counter] != null);
     }
 
